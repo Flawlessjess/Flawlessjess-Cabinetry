@@ -11,13 +11,15 @@ header{height:60px;background:#252526;border-bottom:1px solid #333;display:flex;
 header h1{font-size:22px;color:#ff6b9d}
 .header-btns{display:flex;gap:8px}
 .header-btns button{width:auto;padding:8px 14px;margin:0;font-size:13px}
-.main{display:flex;height:calc(100vh - 60px)}
-aside{width:340px;background:#2d2d30;padding:20px;overflow-y:auto;border-right:1px solid #333}
-aside h2{font-size:16px;margin-bottom:12px;color:#ff6b9d}
-label{display:block;margin-top:10px;margin-bottom:3px;font-size:12px;color:#ccc}
-input{width:100%;padding:7px 8px;background:#1e1e1e;border:1px solid #444;color:white;border-radius:4px;font-size:13px}
-select{width:100%;padding:7px 8px;background:#1e1e1e;border:1px solid #444;color:white;border-radius:4px;font-size:13px}
-button{width:100%;padding:8px;margin-top:8px;background:#d6336c;border:none;border-radius:4px;color:white;cursor:pointer;font-weight:bold;font-size:13px}
+.main{display:flex;height:calc(100vh - 60px);position:relative}
+aside{width:380px;background:#2d2d30;padding:16px;overflow-y:auto;border-right:1px solid #444;flex-shrink:0}
+#sidebarDrag{position:absolute;top:0;width:7px;height:100%;cursor:col-resize;z-index:10;margin-left:-3px;background:transparent}
+#sidebarDrag:hover{background:#ff6b9d;opacity:0.6}
+aside h2{font-size:15px;margin-bottom:10px;color:#ff6b9d}
+label{display:block;margin-top:8px;margin-bottom:2px;font-size:12px;color:#ccc}
+input{width:100%;padding:6px 8px;background:#1e1e1e;border:1px solid #444;color:white;border-radius:4px;font-size:13px}
+select{width:100%;padding:6px 8px;background:#1e1e1e;border:1px solid #444;color:white;border-radius:4px;font-size:13px}
+button{width:100%;padding:7px;margin-top:6px;background:#d6336c;border:none;border-radius:4px;color:white;cursor:pointer;font-weight:bold;font-size:12px}
 button:hover{background:#e64980}
 .btn-danger{background:#c42b1c}
 .btn-danger:hover{background:#e03a2a}
@@ -25,24 +27,36 @@ button:hover{background:#e64980}
 .btn-success:hover{background:#24b35e}
 .btn-outline{background:transparent;border:1px solid #555;color:#ddd}
 .btn-outline:hover{background:#3a3a3a}
-.form-row{display:flex;gap:6px}
+.btn-sm{width:auto;padding:3px 8px;margin:0 2px;font-size:11px;display:inline-block}
+.form-row{display:flex;gap:5px}
 .form-row input{flex:1}
-.form-row button{flex:0 0 auto;width:auto;padding:7px 14px;margin:0}
-.workspace{flex:1;display:flex;flex-direction:column;padding:15px;gap:15px}
-.viewer{flex:1;background:#2d2d30;border:1px solid #444;border-radius:6px;padding:10px;display:flex;flex-direction:column}
-.viewer h2{margin-bottom:10px;color:#ff6b9d;font-size:15px}
-canvas{flex:1;background:white;border:1px solid black}
-#cabinetList{margin-top:8px;max-height:200px;overflow-y:auto}
-.cabinetItem{background:#3b3b40;padding:8px 10px;border-radius:4px;margin-bottom:6px;font-size:12px;position:relative}
-.cabinetItem .del-btn{position:absolute;top:4px;right:6px;background:none;border:none;color:#f55;cursor:pointer;font-size:14px;width:auto;padding:0;margin:0;line-height:1}
-.cabinetItem .del-btn:hover{color:#f88}
-.materialItem{background:#3b3b40;padding:10px;border-radius:4px;margin-bottom:10px}
-hr{margin-top:16px;margin-bottom:16px;border:none;border-top:1px solid #444}
-.section{padding:12px;background:#252526;border-radius:6px;margin-bottom:12px}
-::-webkit-scrollbar{width:6px}
+.form-row button{flex:0 0 auto;width:auto;padding:6px 12px;margin:0}
+.workspace{flex:1;display:flex;flex-direction:column;padding:12px;gap:12px;min-width:0}
+.viewer{flex:1;background:#2d2d30;border:1px solid #444;border-radius:6px;padding:10px;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.viewer h2{margin-bottom:8px;color:#ff6b9d;font-size:14px;flex-shrink:0}
+.canvas-wrap{flex:1;overflow:auto;background:white;border:1px solid black;border-radius:2px;position:relative;min-height:0}
+.canvas-wrap canvas{display:block}
+.section{padding:10px 12px;background:#252526;border-radius:6px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0}
+th,td{padding:3px 4px;text-align:left;border-bottom:1px solid #444}
+th{color:#ff6b9d;font-weight:bold;font-size:11px}
+td input{width:100%;padding:2px 3px;font-size:11px;margin:0}
+.item-bar{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.item-bar span{flex:1;min-width:0}
+.item-actions{white-space:nowrap}
+.item-actions button{width:auto;padding:2px 7px;margin:0 1px;font-size:11px;display:inline-block}
+#cabinetList{margin-top:6px;max-height:160px;overflow-y:auto}
+.cabinetItem{padding:5px 8px;background:#3b3b40;border-radius:4px;margin-bottom:3px;font-size:12px}
+.cost-row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;border-bottom:1px solid #333}
+.cost-total{font-size:16px;color:#ff6b9d;font-weight:bold;text-align:right;margin-top:4px}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:#1e1e1e}
 ::-webkit-scrollbar-thumb{background:#555;border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:#777}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number].qty{-moz-appearance:auto}
+input[type=number].qty::-webkit-outer-spin-button,input[type=number].qty::-webkit-inner-spin-button{-webkit-appearance:auto;margin:0}
 </style>
 </head>
 <body>
@@ -50,148 +64,130 @@ hr{margin-top:16px;margin-bottom:16px;border:none;border-top:1px solid #444}
 <h1>Flawlessjess-Cabinetry</h1>
 <div class="header-btns">
 <button id="undoBtn" class="btn-outline" style="color:#f5a623;border-color:#f5a623">Undo</button>
-<button id="exportBtn" class="btn-outline" style="color:#ff6b9d;border-color:#ff6b9d">Export CSV</button>
+<button id="exportBtn" class="btn-outline" style="color:#ff6b9d;border-color:#ff6b9d">Export XLS</button>
 <button id="saveBtn">Save</button>
 <button id="loadBtn">Load</button>
 <input type="file" id="loadFile" hidden>
+<button id="localPricesBtn" class="btn-outline" style="color:#4ea1ff;border-color:#4ea1ff">Local Prices</button>
+<input type="file" id="localPricesFile" accept=".csv" hidden>
 </div>
 </header>
 <div class="main">
-<aside>
+<div id="sidebarDrag"></div>
+<aside id="sidebar">
 <div class="section">
-<h2>Sheet Size</h2>
-<label>Sheet Width</label>
-<input id="sheetW" type="number" value="2400">
-<label>Sheet Height</label>
-<input id="sheetH" type="number" value="1200">
+<h2>Sheet Inventory
+<button id="fetchPricesBtn" class="btn-outline" style="float:right;width:auto;padding:2px 8px;margin:0;font-size:10px">Fetch Prices</button>
+</h2>
+<table id="invTable">
+<thead><tr><th>Ply</th><th>W</th><th>H</th><th>Qty</th><th>Cost</th><th></th></tr></thead>
+<tbody id="invBody"></tbody>
+</table>
+<div class="form-row">
+<select id="invMat" style="flex:1;padding:3px;font-size:11px">
+<option>25mm Plywood</option><option>19mm Plywood</option><option>17mm Plywood</option><option>15mm Plywood</option>
+</select>
+<input id="invW" type="number" value="2400" style="width:48px;padding:3px;font-size:11px">
+<input id="invH" type="number" value="1200" style="width:48px;padding:3px;font-size:11px">
+<input id="invQty" class="qty" type="number" value="0" min="0" style="width:30px;padding:3px;font-size:11px">
+<input id="invCost" type="number" value="70" style="width:52px;padding:3px;font-size:11px">
+<button id="addInvBtn" class="btn-success" style="width:auto;padding:3px 8px;margin:0">+</button>
+</div>
+</div>
+<div class="section">
+<h2>Offcuts</h2>
+<div id="offcutList" style="max-height:70px;overflow-y:auto;font-size:12px"></div>
+<div class="form-row">
+<select id="offMat" style="flex:1;padding:3px;font-size:11px">
+<option>25mm Plywood</option><option>19mm Plywood</option><option>17mm Plywood</option><option>15mm Plywood</option>
+</select>
+<input id="offW" type="number" value="800" placeholder="W" style="width:50px;padding:3px;font-size:11px">
+<input id="offH" type="number" value="400" placeholder="L" style="width:50px;padding:3px;font-size:11px">
+<button id="addOffBtn" class="btn-success" style="width:auto;padding:3px 8px;margin:0">+</button>
+</div>
 </div>
 <div class="section">
 <h2>Cabinet Wizard</h2>
-<label>Cabinet Type</label>
+<label>Type</label>
 <select id="cabinetType">
-<option>Base Cabinet</option>
-<option>Wall Cabinet</option>
-<option>Pantry</option>
-<option>Vanity</option>
-<option>Tall Cabinet</option>
+<option>Base Cabinet</option><option>Wall Cabinet</option><option>Pantry</option><option>Vanity</option><option>Tall Cabinet</option>
 </select>
-<label>Width</label>
-<input id="width" type="number" value="900">
-<label>Height</label>
-<input id="height" type="number" value="720">
-<label>Depth</label>
-<input id="depth" type="number" value="580">
-<label>Shelves</label>
-<input id="shelves" type="number" value="1">
-<label>Doors</label>
-<input id="doors" type="number" value="2">
-<label>Drawers</label>
-<input id="drawers" type="number" value="0">
+<div class="form-row">
+<div style="flex:1"><label>Width</label><input id="width" type="number" value="900"></div>
+<div style="flex:1"><label>Height</label><input id="height" type="number" value="720"></div>
+<div style="flex:1"><label>Depth</label><input id="depth" type="number" value="580"></div>
+</div>
+<div class="form-row">
+<div style="flex:1"><label>Shelves</label><input id="shelves" type="number" value="1"></div>
+<div style="flex:1"><label>Doors</label><input id="doors" type="number" value="2"></div>
+<div style="flex:1"><label>Drawers</label><input id="drawers" type="number" value="0"></div>
+</div>
 <button id="addCabinet">Add Cabinet</button>
 </div>
 <div class="section">
 <h2>Custom Cut</h2>
-<label>Part Name</label>
-<input id="customName" type="text" value="Custom">
-<div class="form-row" style="margin-top:10px">
-<div style="flex:1">
-<label>Width</label>
-<input id="customW" type="number" value="500">
+<div class="form-row">
+<div style="flex:1"><label>Name</label><input id="customName" type="text" value="Custom"></div>
+<div style="flex:1"><label>Width</label><input id="customW" type="number" value="500"></div>
+<div style="flex:1"><label>Length</label><input id="customH" type="number" value="300"></div>
+<div style="flex:0 0 50px"><label>Qty</label><input id="customQty" class="qty" type="number" value="0" min="0"></div>
 </div>
-<div style="flex:1">
-<label>Length</label>
-<input id="customH" type="number" value="300">
-</div>
-<div style="flex:0 0 60px">
-<label>Qty</label>
-<input id="customQty" type="number" value="1" min="1">
-</div>
+<div style="margin-top:6px">
+<label>Material</label>
+<select id="customMat" style="padding:6px 8px;font-size:13px">
+<option>25mm Plywood</option><option>19mm Plywood</option><option>17mm Plywood</option><option>15mm Plywood</option>
+</select>
 </div>
 <button id="addCustomBtn" class="btn-success">Add Custom Cut</button>
 </div>
 <div class="section">
-<h2>Project Cabinets</h2>
+<h2>Project Items</h2>
 <div id="cabinetList"></div>
 </div>
 <div class="section">
-<h2>Materials</h2>
-<div id="materialSummary">Sheets: 0</div>
+<h2>Cost Estimator</h2>
+<div id="costSummary"></div>
 </div>
 </aside>
 <section class="workspace">
 <div class="viewer">
 <h2>Cut Sheets</h2>
-<canvas id="sheetCanvas" width="1200" height="900"></canvas>
+<div class="canvas-wrap" id="canvasWrap">
+<canvas id="sheetCanvas"></canvas>
+</div>
 </div>
 </section>
 </div>
 
 <script>
-// ===== cabinets.js =====
+const DEFAULT_INV = [];
+
+// ===== Cabinet =====
 class Cabinet {
-constructor(options={}){
-this.type=options.type||"Base Cabinet";
-this.width=options.width||900;
-this.height=options.height||720;
-this.depth=options.depth||580;
-this.material=options.material||"18mm Plywood";
-this.shelves=options.shelves||1;
-this.doors=options.doors||2;
-this.drawers=options.drawers||0;
-this.toeKick=true;
-this.toeHeight=100;
-this.toeSetback=50;
-this.backStyle="Captured";
-this.doorStyle="Shaker";
-this.parts=[];
+constructor(o={}){
+this.type=o.type||"Base Cabinet";this.width=o.width||900;this.height=o.height||720;
+this.depth=o.depth||580;this.material=o.material||"19mm Plywood";
+this.shelves=o.shelves||1;this.doors=o.doors||2;this.drawers=o.drawers||0;
+this.toeKick=true;this.toeHeight=100;this.toeSetback=50;this.backStyle="Captured";this.parts=[];
 }
 generateParts(){
-this.parts=[];
-let W=this.width,H=this.height,D=this.depth;
+this.parts=[];let W=this.width,H=this.height,D=this.depth;
 this.parts.push({name:"Side",width:D,height:H,qty:2,material:this.material});
 this.parts.push({name:"Top",width:W-36,height:D,qty:1,material:this.material});
 this.parts.push({name:"Bottom",width:W-36,height:D,qty:1,material:this.material});
-for(let i=0;i<this.shelves;i++){
-this.parts.push({name:"Shelf",width:W-36,height:D-20,qty:1,material:this.material});
-}
-if(this.toeKick){
-this.parts.push({name:"Toe Front",width:W,height:this.toeHeight,qty:1,material:this.material});
-}
-if(this.backStyle==="Captured"){
-this.parts.push({name:"Back",width:W-36,height:H-36,qty:1,material:"6mm MDF"});
-}
-if(this.backStyle==="Full"){
-this.parts.push({name:"Back",width:W,height:H,qty:1,material:"6mm MDF"});
-}
-if(this.doors>0){
-let dw=W/this.doors;
-for(let i=0;i<this.doors;i++){
-this.parts.push({name:"Door",width:dw-4,height:H-4,qty:1,material:this.material});
-}
-}
+for(let i=0;i<this.shelves;i++) this.parts.push({name:"Shelf",width:W-36,height:D-20,qty:1,material:this.material});
+if(this.toeKick) this.parts.push({name:"Toe Front",width:W,height:this.toeHeight,qty:1,material:this.material});
+if(this.backStyle==="Captured") this.parts.push({name:"Back",width:W-36,height:H-36,qty:1,material:"15mm Plywood"});
+if(this.doors>0){let dw=W/this.doors;for(let i=0;i<this.doors;i++) this.parts.push({name:"Door",width:dw-4,height:H-4,qty:1,material:this.material});}
 for(let i=0;i<this.drawers;i++){
-this.parts.push({name:"Drawer Side",width:D-50,height:150,qty:2,material:"12mm Plywood"});
-this.parts.push({name:"Drawer Front",width:W-100,height:150,qty:1,material:"12mm Plywood"});
-this.parts.push({name:"Drawer Back",width:W-100,height:150,qty:1,material:"12mm Plywood"});
-this.parts.push({name:"Drawer Bottom",width:W-100,height:D-50,qty:1,material:"6mm MDF"});
+this.parts.push({name:"Drawer Side",width:D-50,height:150,qty:2,material:"15mm Plywood"});
+this.parts.push({name:"Drawer Front",width:W-100,height:150,qty:1,material:"15mm Plywood"});
+this.parts.push({name:"Drawer Back",width:W-100,height:150,qty:1,material:"15mm Plywood"});
+this.parts.push({name:"Drawer Bottom",width:W-100,height:D-50,qty:1,material:"15mm Plywood"});
 }
 return this.parts;
 }
-edgeBanding(){
-let total=0;
-this.parts.forEach(p=>{
-if(p.name==="Shelf"||p.name==="Door"||p.name==="Drawer Front"){
-total+=(p.width*2)+(p.height*2);
-}
-});
-return(total/1000).toFixed(2);
-}
-hardware(){
-return{hinges:this.doors*2,slides:this.drawers,pins:this.shelves*4,feet:4};
-}
-summary(){
-return{parts:this.parts.length,edgeBanding:this.edgeBanding(),hardware:this.hardware()};
-}
+hardware(){return{hinges:this.doors*2,slides:this.drawers,pins:this.shelves*4,feet:4}}
 }
 function presets(type){
 switch(type){
@@ -200,113 +196,75 @@ case"Wall Cabinet":return{width:900,height:720,depth:320};
 case"Pantry":return{width:600,height:2100,depth:580};
 case"Vanity":return{width:900,height:870,depth:500};
 default:return{width:900,height:720,depth:580};
-}
-}
+}}
 
-// ===== project.js =====
+// ===== Project =====
 class Project {
 constructor(){
-this.name="Flawlessjess Project";
-this.units="mm";
-this.cabinets=[];
-this.customParts=[];
-this.materials=[
-{id:1,name:"18mm Plywood",thickness:18,width:2400,height:1200,cost:120},
-{id:2,name:"6mm MDF",thickness:6,width:2400,height:1200,cost:40}
-];
-this.offcuts=[];
+this.name="Flawlessjess Project";this.units="mm";
+this.cabinets=[];this.customParts=[];this.sheetInv=[];this.offcuts=[];this.nextId=100;
 }
-addCabinet(cabinet){this.cabinets.push(cabinet)}
-removeCabinet(index){this.cabinets.splice(index,1)}
-duplicateCabinet(index){
-let c=structuredClone(this.cabinets[index]);
-this.cabinets.push(c);
-}
-clear(){this.cabinets=[];this.customParts=[];this.offcuts=[]}
-totalCabinets(){return this.cabinets.length}
-totalSheets(){return this.materials.length}
-addCustomPart(part){this.customParts.push(part)}
-removeCustomPart(index){this.customParts.splice(index,1)}
+addCabinet(c){if(!(c instanceof Cabinet))c=Object.assign(new Cabinet(),c);this.cabinets.push(c)}
+removeCabinet(i){this.cabinets.splice(i,1)}
+addCustomPart(p){this.customParts.push(p)}
+removeCustomPart(i){this.customParts.splice(i,1)}
 getAllParts(){
-let parts=[];
-this.cabinets.forEach(c=>{parts.push(...c.parts)});
-this.customParts.forEach(p=>{parts.push(p)});
-return parts;
+let parts=[];this.cabinets.forEach(c=>{parts.push(...c.parts)});this.customParts.forEach(p=>{parts.push(p)});return parts;
 }
-addOffcut(w,h){this.offcuts.push({width:w,height:h})}
-materialByName(name){return this.materials.find(m=>m.name===name)}
+getHardware(){let h={hinges:0,slides:0,pins:0,feet:0};this.cabinets.forEach(c=>{let d=c.hardware();h.hinges+=d.hinges;h.slides+=d.slides;h.pins+=d.pins;h.feet+=d.feet});return h;}
 save(){return JSON.stringify(this,null,2)}
-load(data){
-let p=JSON.parse(data);
-this.name=p.name;this.units=p.units;this.cabinets=p.cabinets;
-this.customParts=p.customParts||[];
-this.materials=p.materials;this.offcuts=p.offcuts;
+load(data){let p=JSON.parse(data);Object.assign(this,p);this.cabinets=(this.cabinets||[]).map(c=>Object.assign(new Cabinet(),c));this.customParts=this.customParts||[];this.offcuts=this.offcuts||[];this.sheetInv=this.sheetInv||[]}
 }
+function saveProject(p){
+localStorage.setItem("flawlessjess_data",p.save());
+let b=new Blob([p.save()],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="project.cabproj";a.click()
 }
-function saveProject(project){
-let blob=new Blob([project.save()],{type:"application/json"});
-let link=document.createElement("a");
-link.href=URL.createObjectURL(blob);
-link.download="project.cabproj";
-link.click();
-}
-function loadProject(file,project,callback){
-let reader=new FileReader();
-reader.onload=function(){project.load(reader.result);callback()};
-reader.readAsText(file);
-}
+function loadProject(file,p,cb){let r=new FileReader();r.onload=function(){p.load(r.result);cb()};r.readAsText(file)}
 
-// ===== nesting.js =====
+// ===== Nesting Engine =====
 class Sheet {
-constructor(material="18mm Plywood",sw,sh){
-this.material=material;
-this.width=sw||2400;this.height=sh||1200;
-this.parts=[];
-this.freeRects=[{x:0,y:0,w:this.width,h:this.height}];
-}
+constructor(material,w,h){this.material=material;this.width=w;this.height=h;this.parts=[];this.freeRects=[{x:0,y:0,w:this.width,h:this.height}]}
 }
 class NestingEngine {
-constructor(){this.sheets=[];this.sheetW=2400;this.sheetH=1200}
-setSheetSize(w,h){this.sheetW=w;this.sheetH=h}
+constructor(){this.sheets=[];this.sheetUseCount={}}
+setSheetInv(inv,offcuts){
+this.sheetInv=inv;this.offcuts=offcuts||[];this.sheetUseCount={};inv.forEach(s=>this.sheetUseCount[s.id]=0);
+}
 nest(parts){
 this.sheets=[];
 let sorted=[...parts].sort((a,b)=>(b.width*b.height)-(a.width*a.height));
 sorted.forEach(part=>{
 for(let i=0;i<part.qty;i++){
-this.placePart({name:part.name,width:part.width,height:part.height,material:part.material});
+this.placeAnywhere({name:part.name,width:part.width,height:part.height,material:part.material||"19mm Plywood"});
 }
 });
 return this.sheets;
 }
-placePart(part){
-for(let sheet of this.sheets){
+placeAnywhere(part){
+for(let sheet of this.sheets){if(this.tryPlace(sheet,part)) return}
+for(let s of this.sheetInv){
+if((this.sheetUseCount[s.id]||0)<s.qty && part.material===s.name){
+let sheet=new Sheet(s.name,s.w,s.h);
+this.sheets.push(sheet);this.sheetUseCount[s.id]++;
 if(this.tryPlace(sheet,part)) return;
+this.sheets.pop();this.sheetUseCount[s.id]--;
 }
-let sheet=new Sheet(part.material,this.sheetW,this.sheetH);
-this.sheets.push(sheet);
-this.tryPlace(sheet,part);
+}
 }
 tryPlace(sheet,part){
-let best=null,bestScore=-Infinity;
-let pw=part.width,ph=part.height;
+let best=null,bestScore=-Infinity;let pw=part.width,ph=part.height;
 for(let i=0;i<sheet.freeRects.length;i++){
 let r=sheet.freeRects[i];
 for(let rot=0;rot<2;rot++){
-let w=rot?ph:pw,h=rot?pw:ph;
-if(w>r.w||h>r.h) continue;
-let rx=r.x,ry=r.y,rw=r.w,rh=r.h;
-let scoreA=rw*rh-w*h;
-let rightW=rw-w,bottomH=rh-h;
-let spareW=rw*bottomH+rightW*h;
-let spareH=rightW*rh+w*bottomH;
-let score=Math.min(spareW,spareH)-Math.abs(rw-w)-Math.abs(rh-h);
+let w=rot?ph:pw,h=rot?pw:ph;if(w>r.w||h>r.h) continue;
+let rightW=r.w-w,bottomH=r.h-h;
+let spareW=r.w*bottomH+rightW*h,spareH=rightW*r.h+w*bottomH;
+let score=Math.min(spareW,spareH)-Math.abs(r.w-w)-Math.abs(r.h-h);
 if(score>bestScore){bestScore=score;best={i,w,h,split:spareW>=spareH?'H':'V'}}
-}
-}
+}}
 if(!best) return false;
 let r=sheet.freeRects[best.i];
-let p={name:part.name,x:r.x,y:r.y,width:best.w,height:best.h,material:part.material};
-sheet.parts.push(p);
+sheet.parts.push({name:part.name,x:r.x,y:r.y,width:best.w,height:best.h,material:part.material});
 sheet.freeRects.splice(best.i,1);
 if(best.split==='H'){
 if(r.w-best.w>0&&best.h>0) sheet.freeRects.push({x:r.x+best.w,y:r.y,w:r.w-best.w,h:best.h});
@@ -316,189 +274,304 @@ if(best.w>0&&r.h-best.h>0) sheet.freeRects.push({x:r.x,y:r.y+best.h,w:best.w,h:r
 if(r.w-best.w>0&&r.h>0) sheet.freeRects.push({x:r.x+best.w,y:r.y,w:r.w-best.w,h:r.h});
 }
 sheet.freeRects=sheet.freeRects.filter(r=>r.w>8&&r.h>8);
-this.mergeRects(sheet);
-return true;
+this.mergeRects(sheet);return true;
 }
-mergeRects(sheet){
-let merged;
-do{
-merged=false;
-let fr=sheet.freeRects;
-for(let i=0;i<fr.length&&!merged;i++){
-for(let j=i+1;j<fr.length&&!merged;j++){
+mergeRects(sheet){let fr=sheet.freeRects;let m;
+do{m=false;
+for(let i=0;i<fr.length&&!m;i++){for(let j=i+1;j<fr.length&&!m;j++){
 let a=fr[i],b=fr[j];
-if(a.y===b.y&&a.h===b.h&&((a.x+a.w===b.x)||(b.x+b.w===a.x))){
-fr[i]={x:Math.min(a.x,b.x),y:a.y,w:a.w+b.w,h:a.h};
-fr.splice(j,1);merged=true;
-}else if(a.x===b.x&&a.w===b.w&&((a.y+a.h===b.y)||(b.y+b.h===a.y))){
-fr[i]={x:a.x,y:Math.min(a.y,b.y),w:a.w,h:a.h+b.h};
-fr.splice(j,1);merged=true;
+if(a.y===b.y&&a.h===b.h&&((a.x+a.w===b.x)||(b.x+b.w===a.x))){fr[i]={x:Math.min(a.x,b.x),y:a.y,w:a.w+b.w,h:a.h};fr.splice(j,1);m=true}
+else if(a.x===b.x&&a.w===b.w&&((a.y+a.h===b.y)||(b.y+b.h===a.y))){fr[i]={x:a.x,y:Math.min(a.y,b.y),w:a.w,h:a.h+b.h};fr.splice(j,1);m=true}
+}}
+}while(m)}
+materialSummary(){let ta=0,sa=0;this.sheets.forEach(s=>{sa+=s.width*s.height;s.parts.forEach(p=>ta+=p.width*p.height)});return{used:(ta/1e6).toFixed(2),available:(sa/1e6).toFixed(2),waste:sa?((1-ta/sa)*100).toFixed(1):"0.0"}}
 }
-}
-}
-}while(merged);
-}
-materialSummary(){
-let totalArea=0,sheetArea=0;
-this.sheets.forEach(sheet=>{
-sheetArea+=sheet.width*sheet.height;
-sheet.parts.forEach(p=>{totalArea+=p.width*p.height});
-});
-return{used:(totalArea/1000000).toFixed(2),available:(sheetArea/1000000).toFixed(2),waste:sheetArea?((1-totalArea/sheetArea)*100).toFixed(1):"0.0"};
-}
-}
+
+// ===== Canvas Drawing =====
 function drawSheets(canvas,sheets){
 const ctx=canvas.getContext("2d");
-ctx.clearRect(0,0,canvas.width,canvas.height);
-if(!sheets.length)return;
+if(!sheets.length){ctx.clearRect(0,0,canvas.width||1200,canvas.height||600);return}
 let maxW=0;sheets.forEach(s=>{if(s.width>maxW)maxW=s.width});
-let scale=Math.min(520/maxW,380/1200);
-let offsetY=15,gap=20;
+let scale=Math.min(520/maxW,360/1200);let gap=20;
+let totalH=15;sheets.forEach(s=>{totalH+=s.height*scale+gap});
+canvas.height=Math.max(totalH+15,600);
+ctx.clearRect(0,0,canvas.width,canvas.height);
+let offY=15;
 sheets.forEach((sheet,i)=>{
-let sw=sheet.width*scale,sh=sheet.height*scale,x=15,y=offsetY;
-ctx.strokeStyle="#333";
-ctx.strokeRect(x,y,sw,sh);
-ctx.fillStyle="rgba(0,0,0,0.04)";
-ctx.fillRect(x,y,sw,sh);
-ctx.fillStyle="#999";
-ctx.font="10px Arial";
-ctx.fillText("Sheet "+(i+1)+" ("+sheet.width+"x"+sheet.height+")",x+4,y+14);
+let sw=sheet.width*scale,sh=sheet.height*scale,x=15,y=offY;
+ctx.strokeStyle="#333";ctx.lineWidth=1;ctx.strokeRect(x,y,sw,sh);
+ctx.fillStyle="rgba(0,0,0,0.03)";ctx.fillRect(x,y,sw,sh);
+ctx.fillStyle="#999";ctx.font="10px Arial";
+ctx.fillText("Sheet "+(i+1)+" ("+sheet.width+"x"+sheet.height+" "+sheet.material+")",x+4,y+14);
 sheet.parts.forEach(p=>{
 let px=x+p.x*scale,py=y+p.y*scale,pw=p.width*scale,ph=p.height*scale;
-ctx.fillStyle="#ff6b9d";
-ctx.fillRect(px,py,pw,ph);
-ctx.strokeStyle="rgba(0,0,0,0.35)";
-ctx.lineWidth=1;
-ctx.strokeRect(px,py,pw,ph);
-ctx.fillStyle="#000";
-ctx.font="9px Arial";
+ctx.fillStyle="#ff6b9d";ctx.fillRect(px,py,pw,ph);
+ctx.strokeStyle="rgba(0,0,0,0.35)";ctx.lineWidth=1;ctx.strokeRect(px,py,pw,ph);
+ctx.fillStyle="#000";ctx.font="9px Arial";
 ctx.fillText(p.name+" "+p.width+"x"+p.height,px+3,py+12);
-ctx.fillText("("+(p.width*p.height/10000).toFixed(1)+"m\u00b2)",px+3,py+22);
-ctx.strokeStyle="black";ctx.lineWidth=1;
+ctx.fillText((p.width*p.height/10000).toFixed(1)+"m\u00b2",px+3,py+22);
 });
-offsetY+=sh+gap;
-if(offsetY>canvas.height-30) offsetY=15;
+offY+=sh+gap;
 });
 }
 
-// ===== app.js =====
-const project=new Project();
-const nesting=new NestingEngine();
-const type=document.getElementById("cabinetType");
-const widthEl=document.getElementById("width");
-const heightEl=document.getElementById("height");
-const depthEl=document.getElementById("depth");
-const shelvesEl=document.getElementById("shelves");
-const doorsEl=document.getElementById("doors");
-const drawersEl=document.getElementById("drawers");
-const addBtn=document.getElementById("addCabinet");
-const cabinetList=document.getElementById("cabinetList");
-const materialSummary=document.getElementById("materialSummary");
-const canvas=document.getElementById("sheetCanvas");
-canvas.width=1200;canvas.height=900;
-const saveBtn=document.getElementById("saveBtn");
-const loadBtn=document.getElementById("loadBtn");
-const loadFile=document.getElementById("loadFile");
-const undoBtn=document.getElementById("undoBtn");
-const exportBtn=document.getElementById("exportBtn");
-const sheetW=document.getElementById("sheetW");
-const sheetH=document.getElementById("sheetH");
-const customName=document.getElementById("customName");
-const customW=document.getElementById("customW");
-const customH=document.getElementById("customH");
-const customQty=document.getElementById("customQty");
-const addCustomBtn=document.getElementById("addCustomBtn");
+// ===== Sidebar Drag =====
+const sidebar=document.getElementById("sidebar");
+const dragHandle=document.getElementById("sidebarDrag");
+let isDragging=false;
+function posDrag(){dragHandle.style.left=(sidebar.offsetWidth-3)+"px"}
+dragHandle.addEventListener("mousedown",e=>{isDragging=true;e.preventDefault()});
+document.addEventListener("mousemove",e=>{
+if(!isDragging)return;
+let w=Math.max(280,Math.min(700,e.clientX));
+sidebar.style.width=w+"px";posDrag();
+localStorage.setItem("flawlessjess_sidebar_w",w);
+});
+document.addEventListener("mouseup",()=>{isDragging=false});
 
+// ===== App =====
+const project=new Project();const nesting=new NestingEngine();
+const type=document.getElementById("cabinetType");
+const widthEl=document.getElementById("width"),heightEl=document.getElementById("height"),depthEl=document.getElementById("depth");
+const shelvesEl=document.getElementById("shelves"),doorsEl=document.getElementById("doors"),drawersEl=document.getElementById("drawers");
+const addBtn=document.getElementById("addCabinet"),cabinetList=document.getElementById("cabinetList");
+const canvasWrap=document.getElementById("canvasWrap");
+const canvas=document.getElementById("sheetCanvas");canvas.width=1200;
+const saveBtn=document.getElementById("saveBtn"),loadBtn=document.getElementById("loadBtn"),loadFile=document.getElementById("loadFile");
+const undoBtn=document.getElementById("undoBtn"),exportBtn=document.getElementById("exportBtn");
+const fetchPricesBtn=document.getElementById("fetchPricesBtn");
+const localPricesBtn=document.getElementById("localPricesBtn"),localPricesFile=document.getElementById("localPricesFile");
+const customName=document.getElementById("customName"),customW=document.getElementById("customW"),customH=document.getElementById("customH"),customQty=document.getElementById("customQty");
+const customMat=document.getElementById("customMat"),addCustomBtn=document.getElementById("addCustomBtn");
+const invBody=document.getElementById("invBody"),addInvBtn=document.getElementById("addInvBtn");
+const invMat=document.getElementById("invMat"),invW=document.getElementById("invW"),invH=document.getElementById("invH"),invQty=document.getElementById("invQty"),invCost=document.getElementById("invCost");
+const offcutList=document.getElementById("offcutList"),addOffBtn=document.getElementById("addOffBtn");
+const offMat=document.getElementById("offMat"),offW=document.getElementById("offW"),offH=document.getElementById("offH");
+const costSummary=document.getElementById("costSummary");
 let undoStack=[];
 
+// Restore sidebar width and position drag handle
+let savedW=localStorage.getItem("flawlessjess_sidebar_w");
+if(savedW)sidebar.style.width=savedW+"px";
+posDrag();
+
 function pushUndo(){
-undoStack.push(JSON.stringify({cabinets:project.cabinets,customParts:project.customParts}));
-if(undoStack.length>50) undoStack.shift();
+undoStack.push(JSON.stringify({cabinets:project.cabinets,customParts:project.customParts,sheetInv:project.sheetInv,offcuts:project.offcuts}));
+if(undoStack.length>50)undoStack.shift();
 }
 
-type.addEventListener("change",()=>{
-let p=presets(type.value);
-widthEl.value=p.width;heightEl.value=p.height;depthEl.value=p.depth;
-});
+type.addEventListener("change",()=>{let p=presets(type.value);widthEl.value=p.width;heightEl.value=p.height;depthEl.value=p.depth});
 
 addBtn.addEventListener("click",()=>{
-pushUndo();
-let cabinet=new Cabinet({
-type:type.value,width:Number(widthEl.value),height:Number(heightEl.value),
-depth:Number(depthEl.value),shelves:Number(shelvesEl.value),
-doors:Number(doorsEl.value),drawers:Number(drawersEl.value)
-});
-cabinet.generateParts();
-project.addCabinet(cabinet);
-refresh();
+pushUndo();let cab=new Cabinet({type:type.value,width:Number(widthEl.value),height:Number(heightEl.value),depth:Number(depthEl.value),shelves:Number(shelvesEl.value),doors:Number(doorsEl.value),drawers:Number(drawersEl.value)});
+cab.generateParts();project.addCabinet(cab);refresh();autoSave();
 });
 
 addCustomBtn.addEventListener("click",()=>{
 pushUndo();
-let name=customName.value||"Custom";
-let w=Number(customW.value)||100;
-let h=Number(customH.value)||100;
-let qty=Number(customQty.value)||1;
-project.addCustomPart({name:name,width:w,height:h,qty:qty,material:"18mm Plywood"});
-refresh();
+project.addCustomPart({name:customName.value||"Custom",width:Number(customW.value)||100,height:Number(customH.value)||100,qty:Number(customQty.value)||1,material:customMat.value});
+refresh();autoSave();
 });
 
 undoBtn.addEventListener("click",()=>{
-if(!undoStack.length)return;
-let prev=JSON.parse(undoStack.pop());
-project.cabinets=prev.cabinets;
-project.customParts=prev.customParts||[];
-refresh();
+if(!undoStack.length)return;let prev=JSON.parse(undoStack.pop());
+project.cabinets=(prev.cabinets||[]).map(c=>Object.assign(new Cabinet(),c));project.customParts=prev.customParts||[];project.sheetInv=prev.sheetInv||[];project.offcuts=prev.offcuts||[];refresh();autoSave();
 });
+
+function autoSave(){localStorage.setItem("flawlessjess_data",project.save())}
 
 exportBtn.addEventListener("click",()=>{
 let parts=project.getAllParts();
 let rows=[["Part","Width (mm)","Height (mm)","Qty","Area (m\u00b2)","Material"]];
-parts.forEach(p=>{rows.push([p.name,p.width,p.height,p.qty,((p.width*p.height*p.qty)/1000000).toFixed(4),p.material||"18mm Plywood"])});
+parts.forEach(p=>{rows.push([p.name,p.width,p.height,p.qty,((p.width*p.height*p.qty)/1e6).toFixed(4),p.material||"19mm Plywood"])});
+rows.push([]);rows.push(["COST ESTIMATOR"]);rows.push(["Item","Detail","","","","Cost"]);
+let totalCost=0;
+project.sheetInv.forEach(s=>{let used=sheetsUsedFor(s.name);let c=used*s.cost;if(used){rows.push(["Sheets",s.name,used+" x $"+s.cost.toFixed(2),"","","$"+c.toFixed(2)]);totalCost+=c}});
+let hw=project.getHardware();let hwc=hw.hinges*3.5+hw.slides*12+hw.pins*0.2;
+rows.push(["Hardware","hinges/slides/pins","","","","$"+hwc.toFixed(2)]);totalCost+=hwc;
+rows.push([]);rows.push(["TOTAL","","","","","$"+totalCost.toFixed(2)]);
 let csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\r\n");
-let blob=new Blob([csv],{type:"text/csv"});
-let link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="cutlist.csv";link.click();
+let b=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Flawlessjess_Cutlist.csv";a.click();
+});
+
+function sheetsUsedFor(mat){return nesting.sheets?nesting.sheets.filter(s=>s.material===mat).length:0}
+
+fetchPricesBtn.addEventListener("click",async()=>{
+if(!confirm("Fetch current prices from Blacktown Building Supplies?"))return;
+fetchPricesBtn.textContent="Fetching...";fetchPricesBtn.disabled=true;
+let urls={"25mm Plywood":"https://blacktownbuildingsupplies.com.au/product/plywood-structural-2400-x-1200-x-25mm-sheet/","19mm Plywood":"https://blacktownbuildingsupplies.com.au/product/plywood-structural-2400-x-1200-x-19mm-sheet/","15mm Plywood":"https://blacktownbuildingsupplies.com.au/product/plywood-structural-2400-x-1200-x-15mm-sheet/"};
+let fetched=0;
+for(let s of project.sheetInv){
+let url=urls[s.name];if(!url)continue;
+try{
+let r=await fetch("https://api.allorigins.win/get?url="+encodeURIComponent(url));
+let data=await r.json();let m=data.contents.match(/<meta\s+property="product:price:amount"\s+content="([\d.]+)"/);
+if(m){s.cost=parseFloat(m[1]);fetched++}
+}catch(e){}
+await new Promise(r=>setTimeout(r,1000));
+}
+fetchPricesBtn.textContent="Fetch Prices";fetchPricesBtn.disabled=false;
+alert("Updated "+fetched+" prices from Blacktown Building Supplies.");
+});
+
+localPricesBtn.addEventListener("click",()=>{
+let rows=[["Name","Width","Height","Qty","Cost"]];project.sheetInv.forEach(s=>rows.push([s.name,s.w,s.h,s.qty,s.cost]));
+let csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\r\n");
+let b=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Flawlessjess_Local_Prices.csv";a.click();
+});
+localPricesFile.addEventListener("change",e=>{
+let file=e.target.files[0];if(!file)return;
+let r=new FileReader();
+r.onload=function(){
+let lines=r.result.split("\r\n").filter(l=>l.trim());
+for(let i=1;i<lines.length;i++){
+let p=lines[i].split(",").map(v=>v.replace(/^"|"$/g,"").replace(/""/g,'"'));
+if(p.length>=5){let idx=project.sheetInv.findIndex(s=>s.name===p[0]);if(idx>=0)project.sheetInv[idx].cost=parseFloat(p[4])||project.sheetInv[idx].cost}
+}
+autoSave();refresh();alert("Prices imported from spreadsheet.");
+};
+r.readAsText(file);localPricesFile.value="";
+});
+
+// Sheet Inventory
+function renderInv(){
+invBody.innerHTML="";
+project.sheetInv.forEach((s,i)=>{
+let tr=document.createElement("tr");
+tr.innerHTML=`<td><input value="${s.name}" data-inv-field="${i}-name" size="${Math.max(8,s.name.length+1)}"></td>
+<td><input type="number" value="${s.w}" data-inv-field="${i}-w" size="${String(s.w).length+1}"></td>
+<td><input type="number" value="${s.h}" data-inv-field="${i}-h" size="${String(s.h).length+1}"></td>
+<td><input class="qty" type="number" value="${s.qty}" data-inv-field="${i}-qty" size="${String(Math.max(1,s.qty)).length+2}" style="text-align:center;min-width:28px"></td>
+<td><input type="number" value="${s.cost}" data-inv-field="${i}-cost" step="0.5" size="${String(Math.max(4,s.cost)).length+2}" style="text-align:right"></td>
+<td><button class="btn-danger" style="width:auto;padding:1px 5px;margin:0;font-size:10px" data-inv-del="${i}">x</button></td>`;
+invBody.appendChild(tr);
+});
+invBody.querySelectorAll("[data-inv-field]").forEach(inp=>{
+let parts=inp.dataset.invField.split("-");let idx=parseInt(parts[0]),field=parts[1];
+inp.addEventListener("change",()=>{
+let v=field==="name"?inp.value:Number(inp.value);
+if(field==="cost"&&v<0)v=0;if((field==="w"||field==="h")&&v<1)v=1;
+project.sheetInv[idx][field]=v;autoSave();refresh();
+});
+});
+invBody.querySelectorAll("[data-inv-del]").forEach(btn=>{
+btn.addEventListener("click",()=>{pushUndo();project.sheetInv.splice(parseInt(btn.dataset.invDel),1);autoSave();refresh()});
+});
+}
+
+addInvBtn.addEventListener("click",()=>{
+pushUndo();project.sheetInv.push({id:"s"+project.nextId++,name:invMat.value,w:Number(invW.value)||2400,h:Number(invH.value)||1200,qty:Number(invQty.value)||1,cost:Number(invCost.value)||0});renderInv();autoSave();refresh();
+});
+
+// Offcuts
+function renderOffcuts(){
+offcutList.innerHTML="";if(!project.offcuts.length){offcutList.innerHTML='<span style="color:#555;font-size:11px">No offcuts added</span>';return}
+project.offcuts.forEach((o,i)=>{
+let d=document.createElement("div");d.style.cssText="padding:2px 0;display:flex;justify-content:space-between;align-items:center";
+d.innerHTML=`<span style="font-size:11px">${o.name||o.material} ${o.w}x${o.h}</span><button class="btn-danger" style="width:auto;padding:1px 5px;margin:0;font-size:10px" data-off-del="${i}">x</button>`;
+offcutList.appendChild(d);
+});
+offcutList.querySelectorAll("[data-off-del]").forEach(btn=>{
+btn.addEventListener("click",()=>{pushUndo();project.offcuts.splice(parseInt(btn.dataset.offDel),1);autoSave();refresh()});
+});
+}
+
+addOffBtn.addEventListener("click",()=>{
+pushUndo();project.offcuts.push({material:offMat.value,name:offMat.value,w:Number(offW.value)||100,h:Number(offH.value)||100});renderOffcuts();autoSave();refresh();
 });
 
 function refresh(){
+renderInv();
+// Auto-add sheets for materials used by parts but missing from inventory
+project.getAllParts().forEach(p=>{let m=p.material||"19mm Plywood";if(!project.sheetInv.some(s=>s.name===m)){project.sheetInv.push({id:"s"+project.nextId++,name:m,w:2400,h:1200,qty:1,cost:m.includes("25")?118.50:m.includes("19")?91.00:m.includes("17")?78.50:70.10})}});
+if(project.sheetInv.length)renderInv();
 cabinetList.innerHTML="";
 project.cabinets.forEach((c,i)=>{
-let div=document.createElement("div");
-div.className="cabinetItem";
-let hw=c.hardware();
-div.innerHTML=`<b>${c.type}</b> ${c.width}x${c.height}x${c.depth}<br>Parts: ${c.parts.length} | Tape: ${c.edgeBanding()}m | Hinges: ${hw.hinges} Slides: ${hw.slides}<button class="del-btn" data-i="${i}">&times;</button>`;
+let div=document.createElement("div");div.className="cabinetItem";let hw=c.hardware();
+div.innerHTML=`<div class="item-bar"><span><b>${c.type}</b> ${c.width}x${c.height}x${c.depth}</span>
+<div class="item-actions">
+<button class="btn-outline btn-sm" data-dup-cab="${i}" style="color:#4ea1ff;border-color:#4ea1ff">D</button>
+<button class="btn-outline btn-sm" data-edit-cab="${i}">E</button>
+<button class="btn-danger btn-sm" data-del-cab="${i}">x</button></div></div>
+<div style="font-size:11px;color:#aaa;margin-top:1px">Parts:${c.parts.length} H:${hw.hinges} S:${hw.slides}</div>`;
 cabinetList.appendChild(div);
 });
-let customParts=project.customParts||[];
-customParts.forEach((p,i)=>{
+project.customParts.forEach((p,i)=>{
 let div=document.createElement("div");div.className="cabinetItem";
-div.innerHTML=`<b>${p.name}</b> ${p.width}x${p.height} x${p.qty}<br>Custom Cut<button class="del-btn" data-c="${i}">&times;</button>`;
+div.innerHTML=`<div class="item-bar"><span><b>${p.name}</b> ${p.width}x${p.height} x${p.qty} ${p.material||""}</span>
+<div class="item-actions">
+<button class="btn-outline btn-sm" data-dup-cus="${i}" style="color:#4ea1ff;border-color:#4ea1ff">D</button>
+<button class="btn-outline btn-sm" data-edit-cus="${i}">E</button>
+<button class="btn-danger btn-sm" data-del-cus="${i}">x</button></div></div>`;
 cabinetList.appendChild(div);
 });
-cabinetList.querySelectorAll(".del-btn[data-i]").forEach(btn=>{
-btn.addEventListener("click",()=>{pushUndo();project.removeCabinet(Number(btn.dataset.i));refresh()});
+cabinetList.querySelectorAll("[data-del-cab]").forEach(btn=>{btn.addEventListener("click",()=>{pushUndo();project.removeCabinet(Number(btn.dataset.delCab));autoSave();refresh()})});
+cabinetList.querySelectorAll("[data-del-cus]").forEach(btn=>{btn.addEventListener("click",()=>{pushUndo();project.removeCustomPart(Number(btn.dataset.delCus));autoSave();refresh()})});
+cabinetList.querySelectorAll("[data-dup-cab]").forEach(btn=>{btn.addEventListener("click",()=>{pushUndo();let c=structuredClone(project.cabinets[Number(btn.dataset.dupCab)]);project.addCabinet(c);autoSave();refresh()})});
+cabinetList.querySelectorAll("[data-dup-cus]").forEach(btn=>{btn.addEventListener("click",()=>{pushUndo();let p=structuredClone(project.customParts[Number(btn.dataset.dupCus)]);project.addCustomPart(p);autoSave();refresh()})});
+cabinetList.querySelectorAll("[data-edit-cab]").forEach(btn=>{
+btn.addEventListener("click",()=>{
+let i=Number(btn.dataset.editCab);let c=project.cabinets[i];
+let w=prompt("Width (mm):",c.width);if(w===null)return;c.width=Number(w)||c.width;
+let h=prompt("Height (mm):",c.height);if(h===null)return;c.height=Number(h)||c.height;
+let d=prompt("Depth (mm):",c.depth);if(d===null)return;c.depth=Number(d)||c.depth;
+let sh=prompt("Shelves:",c.shelves);if(sh===null)return;c.shelves=Number(sh)||c.shelves;
+let dr=prompt("Doors:",c.doors);if(dr===null)return;c.doors=Number(dr)||c.doors;
+let dw=prompt("Drawers:",c.drawers);if(dw===null)return;c.drawers=Number(dw)||c.drawers;
+c.generateParts();autoSave();refresh();
 });
-cabinetList.querySelectorAll(".del-btn[data-c]").forEach(btn=>{
-btn.addEventListener("click",()=>{project.removeCustomPart(Number(btn.dataset.c));refresh()});
 });
-let sW=Number(sheetW.value)||2400;
-let sH=Number(sheetH.value)||1200;
-nesting.setSheetSize(sW,sH);
-let parts=project.getAllParts();
-let sheets=nesting.nest(parts);
+cabinetList.querySelectorAll("[data-edit-cus]").forEach(btn=>{
+btn.addEventListener("click",()=>{
+let i=Number(btn.dataset.editCus);let p=project.customParts[i];
+let n=prompt("Name:",p.name);if(n===null)return;p.name=n||"Custom";
+let w=prompt("Width (mm):",p.width);if(w===null)return;p.width=Number(w)||p.width;
+let h=prompt("Length (mm):",p.height);if(h===null)return;p.height=Number(h)||p.height;
+let q=prompt("Qty:",p.qty);if(q===null)return;p.qty=Number(q)||p.qty;
+autoSave();refresh();
+});
+});
+nesting.setSheetInv(project.sheetInv,project.offcuts);
+let parts=project.getAllParts();let sheets=nesting.nest(parts);
 drawSheets(canvas,sheets);
-let sheets18=sheets.filter(s=>s.material==="18mm Plywood");
-let sheets6=sheets.filter(s=>s.material==="6mm MDF");
+// Auto-generate offcuts from nesting free rects
+let newOffcuts=[];
+nesting.sheets.forEach(s=>{s.freeRects.forEach(r=>{if(r.w>=100&&r.h>=100)newOffcuts.push({material:s.material,name:s.material+" Offcut",w:Math.round(r.w),h:Math.round(r.h)})})});
+project.offcuts=newOffcuts;renderOffcuts();
 let m=nesting.materialSummary();
-materialSummary.innerHTML="<b>18mm Ply</b> ("+sW+"x"+sH+")<br>Sheets: "+sheets18.length+"<br><b>6mm MDF</b> ("+sW+"x"+sH+")<br>Sheets: "+sheets6.length+"<br><br><b>Total</b><br>Sheets: "+sheets.length+"<br>Used: "+m.used+"m\u00b2<br>Waste: "+m.waste+"%";
+// Cost estimator
+let totalCost=0;let costRows=[];
+project.sheetInv.forEach(s=>{let used=sheets.filter(sh=>sh.material===s.name).length;let cost=used*s.cost;totalCost+=cost;if(used)costRows.push({label:s.name,val:used+" x $"+s.cost.toFixed(2)+" = $"+cost.toFixed(2)})});
+let hw=project.getHardware();let hwCost=hw.hinges*3.5+hw.slides*12+hw.pins*0.2;totalCost+=hwCost;
+costSummary.innerHTML=(costRows.length?'<div style="font-size:12px;font-weight:bold;color:#ff6b9d;margin-bottom:4px">Sheets Used</div>':'')+
+costRows.map(r=>'<div class="cost-row"><span>'+r.label+'</span><span>'+r.val+'</span></div>').join("")+
+'<div class="cost-row" style="margin-top:4px"><span>Hardware (hinges $3.50, slides $12, pins $0.20)</span><span>$'+hwCost.toFixed(2)+'</span></div>'+
+'<div class="cost-total">Total: $'+totalCost.toFixed(2)+'</div>';
 }
 
 saveBtn.addEventListener("click",()=>{saveProject(project)});
 loadBtn.addEventListener("click",()=>{loadFile.click()});
-loadFile.addEventListener("change",e=>{let file=e.target.files[0];loadProject(file,project,()=>{refresh()})});
-sheetW.addEventListener("change",refresh);
-sheetH.addEventListener("change",refresh);
+loadFile.addEventListener("change",e=>{let file=e.target.files[0];if(file)loadProject(file,project,()=>{refresh()})});
 
+// Initialize – clear old localStorage if it has old material names, then load or use defaults
+let saved=localStorage.getItem("flawlessjess_data");
+if(saved){
+try{
+let tmp=JSON.parse(saved);
+// Detect old format (had "18mm Plywood" etc.) and purge it
+if(tmp.sheetInv&&tmp.sheetInv.length&&tmp.sheetInv[0].name&&tmp.sheetInv[0].name.includes("mm ")){
+let hasNew=tmp.sheetInv.some(s=>s.name==="25mm Plywood"||s.name==="19mm Plywood");
+if(!hasNew) saved=null; // old format, discard
+}
+}catch(e){saved=null}
+}
+if(saved){
+try{project.load(saved)}catch(e){saved=null}
+}
+if(!saved||!project.sheetInv.length){
+project.sheetInv=JSON.parse(JSON.stringify(DEFAULT_INV));
+project.nextId=100;
+}
 refresh();
 </script>
 </body>
